@@ -1,0 +1,26 @@
+// data transfer object aka dto
+
+// what is a dto?
+object; carries data bw processes
+
+// why dto?
+earlier comm bw processes used remote interfaces (web services); where each call is expensive
+each call increases round-trip time from client to server
+to save calls - dto is used
+
+// how dto saves calls
+dto aggregates data of several calls and sends in one call
+
+// diff bw dto, business objects and data access objects
+doesn't contain anything else than storage and retrieval of own data; getters and setters
+
+// does dto contain business logic?
+no
+
+// what is business logic?
+real world business rules that determine how data is created; stored; changed
+models real world business objects such as accounts; loans; inventories
+eg: if amt in bank account is 0, then withdraw() will not work, and balance can never go negative
+
+// where to use DTO?
+where moving data bw processes goes though expensive remote calls
