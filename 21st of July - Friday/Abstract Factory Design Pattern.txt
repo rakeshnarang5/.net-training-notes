@@ -1,0 +1,86 @@
+Abstract Factory Design Pattern
+
+// what does abstract factory do?
+it is a super factory, that creates other factories
+
+// it is which type of pattern?
+creational pattern
+
+// what is an abstract factory?
+an interface
+
+// how does it work?
+creates factory of related objects; without specifying classes of those objects
+
+// how do objects of abstract factory produce objects?
+as per regular factory pattern
+
+// implementation of abstract factory
+
+// program structure
+two intefaces - Ishape and Icolor
+then concrete classes that implement shape and color
+then abstract factory
+both shapefactory and colorfactory implement abstract factory
+factory generator class = creates shapefactory or colorfactory
+
+// how do we demo the above program structure?
+factory producer creates an abstract factory
+factory producer will pass "shape info like circle, rectangle, square" and "color info like red, green, blue) to the abstract factory to get "an object"
+
+// implementation using java
+
+step 1 - Ishape interface with draw() method
+step 2 - concrete classes Rectangle, Square, Circle that implement Ishape
+step 3 - Icolor interface with fill() method
+step 4 - concrete classes Red, Blue, Green that implement Icolor interface
+step 5 - abstract factory class to get two factories for color and shape
+
+public abstract class AbstractFactory
+{
+	abstract IColor getColor(String color);
+	abstract IShape getShape(String shape);
+} 
+
+step 6 - create shapefactory and colorfactory classes that extend abstractfactory and generates objects of concrete classes
+
+// shapefactory
+in this factory, new objects as per given shape string will return shape objects through interface
+
+// colorfactory
+in this factory, new object as per given color string will return color objects through interface
+
+step 7 - create a factory producer, with a method that generates either a shapefactory or a color factory based on string passed
+
+public class FactoryProducer
+{
+	public static AbstractFactory getFactory(String choice)
+	{
+		if (choice = shape)
+		{
+			return new ShapeFactory();
+		}
+
+		if (choice = color)
+		{
+			return new ColorFactory();
+		}
+
+		return null;
+	}
+}
+
+step 8 - a demo of the abstract factory design pattern
+
+p s v main()
+{
+	AbstractFactory shapeFactory = FactoryProducer.getFactory("shape");
+
+	Shape shape1 = shapeFactory.getShape("circle");
+
+	AbstractFactory colorFactory = FactoryProduct.getFactory("color");
+
+	Color color1 = colorFactory.getColor("red");
+
+	color1.fill();
+}
